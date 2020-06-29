@@ -1,0 +1,19 @@
+__
+
+---
+[01:34] Descrever no artigo a limitação de que a tela de configurações não tem audiodescrição.
+O audio estava ruim, mas do meio para o fim ficou bom.
+
+-------------
+Requisitos:
+a) permitir ao usuário se localizar no ambiente sem depender de recursos visuais (RF); 
+  ... testes
+
+b) permitir ao usuário realizar as atividades sem se beneficiar da descrição do ambiente (RF); 
+  ... ter opção nas configurações para desabilitar as mensagens de texto exibidas na tela.
+
+c) identificar “dead ends” permitindo que o Furbot teletransporte para a posição anterior a entrada do caminho errado (RF); 
+
+d) utilizar audiodescrição para ambientar o usuário (RNF); 
+
+e) utilizar uma voz com efeito robótico para audiodescrição, causando maior imersão (RNF); 
