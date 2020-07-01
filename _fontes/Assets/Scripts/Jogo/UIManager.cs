@@ -1191,7 +1191,11 @@ public class UIManager : MonoBehaviour
             tesouroFeedback.text = "Nesta passagem você coletou " + (diferenca * -1) + " tesouro(s) a menos!";
             tesouroFeedback.color = Color.red;
         }
-        Speaker.Speak("Parabéns, você concluiu a fase!", null, Speaker.VoiceForName(PlayerPrefs.GetString("VoiceName")), true, PlayerPrefs.GetFloat("Rate"), PlayerPrefs.GetFloat("Pitch"));
+        if (LabManager.IsLab)
+        {
+            Speaker.Speak("Parabéns! Você concluiu a fase de teste do modo labirinto", null, Speaker.VoiceForName(PlayerPrefs.GetString("VoiceName")), true, PlayerPrefs.GetFloat("Rate"), PlayerPrefs.GetFloat("Pitch"));
+            uiManagerSucesso.btnProximo.Select();
+        }
     }
 
     /// <summary>

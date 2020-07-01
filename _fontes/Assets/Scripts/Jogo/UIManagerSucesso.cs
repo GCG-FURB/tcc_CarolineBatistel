@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Crosstales.RTVoice;
 
 public class UIManagerSucesso : MonoBehaviour
 {
@@ -20,7 +21,11 @@ public class UIManagerSucesso : MonoBehaviour
         btnSair.onClick.AddListener(delegate { Sair(); });
         btnProximo.onClick.AddListener(delegate { ProximaFase(); });
         _lm = GameObject.Find("LevelManager").GetComponent<LevelManager>();
-        _furbot = GameObject.Find("Furbot").GetComponent<Furbot>();
+        try
+        {
+            _furbot = GameObject.Find("Furbot").GetComponent<Furbot>();
+        }
+        catch (System.NullReferenceException n) { _furbot = GameObject.Find("Furbot_LAB").GetComponent<FurbotLAB>(); }
     }
 
     /// <summary>
@@ -46,15 +51,23 @@ public class UIManagerSucesso : MonoBehaviour
     /// </summary>
     public void ProximaFase()
     {
-        LevelManager.sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        LevelManager.faseAtual++;
-        GameObject.Find("GameManager").GetComponent<GameManager>().ReiniciarContadores();
-        PontuacaoController.pontosFase = 0;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        _furbot.Reiniciar();
-        if (LevelManager.ultimaFaseLiberada % 5 == 0)
+        if(LabManager.IsLab)
         {
-            GameObject.Find("GameManager").GetComponent<GameManager>().energia = 100;
+            _furbot.Reiniciar();
+            SceneManager.LoadScene("MenuPrincipal");
+        } 
+        else
+        {
+            LevelManager.sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            LevelManager.faseAtual++;
+            GameObject.Find("GameManager").GetComponent<GameManager>().ReiniciarContadores();
+            PontuacaoController.pontosFase = 0;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            _furbot.Reiniciar();
+            if (LevelManager.ultimaFaseLiberada % 5 == 0)
+            {
+                GameObject.Find("GameManager").GetComponent<GameManager>().energia = 100;
+            }
         }
     }
 

@@ -258,7 +258,6 @@ public class LevelManager : MonoBehaviour
                 }
                 _isMoving = true;
                 _canMove = false;
-                Speaker.Speak(fases[_fasePisando].gameObject.name, null, Speaker.VoiceForName(PlayerPrefs.GetString("VoiceName")), true, PlayerPrefs.GetFloat("Rate"), PlayerPrefs.GetFloat("Pitch"));
             }
         }
         if (_isMoving)
@@ -267,6 +266,7 @@ public class LevelManager : MonoBehaviour
             StartCoroutine(MoverCooldown());
             _isMoving = false;
         }
+        Speaker.Speak(fases[_fasePisando].gameObject.name, null, Speaker.VoiceForName(PlayerPrefs.GetString("VoiceName")), true, PlayerPrefs.GetFloat("Rate"), PlayerPrefs.GetFloat("Pitch"));
     }
 
     public void MoverFaseAnterior()
@@ -364,6 +364,7 @@ public class LevelManager : MonoBehaviour
             StartCoroutine(MoverCooldown());
             _isMoving = false;
         }
+        Speaker.Speak(fases[_fasePisando].gameObject.name, null, Speaker.VoiceForName(PlayerPrefs.GetString("VoiceName")), true, PlayerPrefs.GetFloat("Rate"), PlayerPrefs.GetFloat("Pitch"));
     }
 
     public void OkButton()

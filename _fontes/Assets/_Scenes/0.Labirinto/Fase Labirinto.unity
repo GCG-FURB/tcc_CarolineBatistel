@@ -601,6 +601,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 18.25
       objectReference: {fileID: 0}
+    - target: {fileID: 114722076346518086, guid: bb9b5a70a1009ba49a0b0347ee83d3e8,
+        type: 3}
+      propertyPath: VoiceName
+      value: Microsoft Maria Desktop
+      objectReference: {fileID: 0}
     - target: {fileID: 114643009076169174, guid: bb9b5a70a1009ba49a0b0347ee83d3e8,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -684,6 +689,10 @@ PrefabInstance:
     - target: {fileID: 114621823602796814, guid: bb9b5a70a1009ba49a0b0347ee83d3e8,
         type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162019133460908, guid: bb9b5a70a1009ba49a0b0347ee83d3e8, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1369920042873302, guid: bb9b5a70a1009ba49a0b0347ee83d3e8, type: 3}
@@ -705,17 +714,65 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1162019133460908, guid: bb9b5a70a1009ba49a0b0347ee83d3e8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114722076346518086, guid: bb9b5a70a1009ba49a0b0347ee83d3e8,
-        type: 3}
-      propertyPath: VoiceName
-      value: Microsoft Maria Desktop
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb9b5a70a1009ba49a0b0347ee83d3e8, type: 3}
+--- !u!1 &288745271 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1821844770635240, guid: bb9b5a70a1009ba49a0b0347ee83d3e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 288745270}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &288745272 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1490285101497546, guid: bb9b5a70a1009ba49a0b0347ee83d3e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 288745270}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &288745273 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1933750389576286, guid: bb9b5a70a1009ba49a0b0347ee83d3e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 288745270}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &288745274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288745271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9265e6edee8a06448b5b26023fd881de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextoBotao: "Pr\xF3xima"
+--- !u!114 &288745275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288745272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9265e6edee8a06448b5b26023fd881de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextoBotao: Reiniciar fase
+--- !u!114 &288745276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288745273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9265e6edee8a06448b5b26023fd881de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextoBotao: Sair da fase
 --- !u!1 &427828475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1906,6 +1963,7 @@ MonoBehaviour:
     e 2 vezes abaixo, ou 2 vezes abaixo e 4 vezes a direita. Existem outros caminhos
     n\xE3o explorados, mas ele s\xE3o caminhos sem sa\xEDda"
   falar: 0
+  checkpoint: {fileID: 11400000, guid: 1e98bba1a4d57a34dbfb5e6a675400a3, type: 2}
 --- !u!61 &1066116355
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2080,6 +2138,7 @@ MonoBehaviour:
     a direita, 2 vezes abaixo e mais 3 vezes a direita. Existem outros caminhos que
     podem ser seguidos, mas resultam em becos sem sa\xEDda"
   falar: 1
+  checkpoint: {fileID: 11400000, guid: 10c34824511da2c42803807107cc42c7, type: 2}
 --- !u!61 &1224425405
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4024,6 +4083,7 @@ MonoBehaviour:
   caminho: "Estamos perto da pista que precisamos, siga uma casa a direita, tr\xEAs
     acima e mais duas a direita. Existe um caminho abaixo mas ele n\xE3o tem saida"
   falar: 1
+  checkpoint: {fileID: 11400000, guid: c804896c787b755469df67b6eb9eb1ba, type: 2}
 --- !u!1 &2002538082
 GameObject:
   m_ObjectHideFlags: 0
@@ -4206,6 +4266,11 @@ PrefabInstance:
       propertyPath: ActiveCheckpoint
       value: 
       objectReference: {fileID: 1066116353}
+    - target: {fileID: 8669268808461295793, guid: 00e5e13909e2f554c8e3e1f8e723fce9,
+        type: 3}
+      propertyPath: testando
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8669268809382539748, guid: 00e5e13909e2f554c8e3e1f8e723fce9,
         type: 3}
       propertyPath: m_PointLightInnerAngle

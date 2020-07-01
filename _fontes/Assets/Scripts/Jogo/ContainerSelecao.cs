@@ -72,7 +72,7 @@ public class ContainerSelecao : MonoBehaviour
         }
         else 
         {
-            Fase1_lab.name = "Fase 1_LAB";
+            Fase1_lab.name = "Fase Labirinto";
         }
     }
 }

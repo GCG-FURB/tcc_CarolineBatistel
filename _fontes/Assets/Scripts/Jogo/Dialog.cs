@@ -161,7 +161,7 @@ public class Dialog : MonoBehaviour
             {
                 if (indiceDialogo < _dialogoAtual.Length)
                 {
-                    if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && !Speaker.isSpeaking)
+                    if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) && !Speaker.isSpeaking)
                     {
                         PularFala();
                     }

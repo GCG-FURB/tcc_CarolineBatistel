@@ -19,7 +19,7 @@ public class FurbotLAB : Furbot
     {
         base.Start();
         this.checkpoint = ScriptableObject.CreateInstance<Checkpoint>();
-        CriarCheckpoint();
+        CriarCheckpoint(this.checkpoint);
         StartCoroutine(_uiManager.Diga(Dialog_Char.S223, "Oh não! Parece que caímos em um labirinto, não sabemos muito sobre onde estamos. Utilize a tecla T para ouvir os comandos disponiveis. "+ ActiveCheckpoint.GetComponent<CheckpointController>().caminho));
     }
 
@@ -28,7 +28,7 @@ public class FurbotLAB : Furbot
         if (!_uiManager.emDialogo)
         {
             
-            if (!isMoving)
+            if (!isMoving && !venceu)
             {
                 if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
                 {
@@ -75,7 +75,7 @@ public class FurbotLAB : Furbot
                 }
                 if (Input.GetKeyDown(KeyCode.G))
                 {
-                    StartCoroutine(_uiManager.Diga(Dialog_Char.S223, "O Futbot possui "+ this.energia + " de energia restante e "+ this.vidas + " vidas"));
+                    StartCoroutine(_uiManager.Diga(Dialog_Char.S223, "O Furbot possui "+ this.energia + " de energia restante e "+ this.vidas + " vidas"));
                 }
             }
         }
@@ -112,19 +112,19 @@ public class FurbotLAB : Furbot
 
     }
 
-    public void CriarCheckpoint()
-    {
-        checkpoint.posicao = this.transform.position;
-        checkpoint.energia = this.energia;
-        checkpoint.vidas = this.vidas;
-        checkpoint.codigo = _uiManager.ifCodigo.text;
+    public void CriarCheckpoint(Checkpoint checkpoint)
+    { 
+        this.checkpoint.posicao = checkpoint.posicao;
+        this.checkpoint.energia = this.energia;
+        this.checkpoint.vidas = this.vidas;
+        this.checkpoint.codigo = _uiManager.ifCodigo.text;
     }
 
     public void UtilizarCheckpoint()
     {
-        this.transform.position = checkpoint.posicao;
-        this.energia = checkpoint.energia;
-        this.vidas = checkpoint.vidas;
+        transform.position = this.checkpoint.posicao;
+        this.energia = this.checkpoint.energia;
+        this.vidas = this.checkpoint.vidas;
     }
 
     public Sensor GetSensor(Direcao dir)
@@ -157,7 +157,7 @@ public class FurbotLAB : Furbot
     /// <param name="direcao">Direção a qual o Furbot vai andar</param>
     public void Andar(Direcao direcao)
     {
-        if (!isMoving && !_uiManager.emDialogo && !VaiBater(direcao))
+        if (!isMoving && !_uiManager.emDialogo && !VaiBater(direcao) && !venceu)
         {
             _posicaoAtual = ConverterPosMundoParaPosCell(this.GetComponent<Collider2D>().bounds.center);
 
@@ -453,6 +453,7 @@ public class FurbotLAB : Furbot
                 _uiManager.AtualizarQntTesouros(tesouros);
                 _uiManager.AtualizarPontuacao();
                 _uiManager.AddLog("O Furbot coletou um Tesouro");
+                Speaker.Speak("O Furbot coletou um Tesouro", null, Speaker.VoiceForName(PlayerPrefs.GetString("VoiceName")), true, PlayerPrefs.GetFloat("Rate"), PlayerPrefs.GetFloat("Pitch"));
                 break;
             case "energia":
                 _analisador.IncrementarEnergia();
@@ -933,6 +934,7 @@ public class FurbotLAB : Furbot
     /// <returns>Retorna uma espera de 1.5 segundos.</returns>
     private IEnumerator DelaySucesso()
     {
+        
         yield return new WaitForSeconds(1.5f);
         _uiManager.MostrarSucesso();
         yield break;

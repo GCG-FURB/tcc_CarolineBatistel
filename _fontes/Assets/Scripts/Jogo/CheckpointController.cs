@@ -7,6 +7,7 @@ public class CheckpointController : MonoBehaviour
     public FurbotLAB Furbot;
     public string caminho;
     public bool falar;
+    public Checkpoint checkpoint;
     private UIManager _uiManager;
 
     private void Start()
@@ -33,7 +34,7 @@ public class CheckpointController : MonoBehaviour
     public void Executar()
     {
         _uiManager.SalvarTexto();
-        Furbot.CriarCheckpoint();
+        Furbot.CriarCheckpoint(this.checkpoint);
         StartCoroutine(_uiManager.Diga(Dialog_Char.S223, caminho));
         Furbot.ActiveCheckpoint = this.transform;
         falar = false;
