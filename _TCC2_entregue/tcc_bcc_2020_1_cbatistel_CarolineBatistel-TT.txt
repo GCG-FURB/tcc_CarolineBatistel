@@ -1,0 +1,3 @@
+É necessário ter vozes TTS instaladas no computador (caso seja um Windows 10 vem algumas de fabrica)
+Descompactar o arquivo presente na pasta fontes, caso o computador seja um Windows, basta descompactar a pasta build e executar o arquivo Furbot v3.1.exe.
+Em outros sistemas operacionais, deve-se abrir a pasta como projeto utilizando o Unity 2019.2.7f2 e utilizar o menu File > Build setings, para selecionar a plataforma desejada e gerar um build.
