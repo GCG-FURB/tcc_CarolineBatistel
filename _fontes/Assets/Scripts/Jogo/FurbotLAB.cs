@@ -19,6 +19,7 @@ public class FurbotLAB : Furbot
     {
         base.Start();
         this.checkpoint = ScriptableObject.CreateInstance<Checkpoint>();
+        this.checkpoint.posicao = this.transform.position;
         CriarCheckpoint(this.checkpoint);
         StartCoroutine(_uiManager.Diga(Dialog_Char.S223, "Oh não! Parece que caímos em um labirinto, não sabemos muito sobre onde estamos. Utilize a tecla T para ouvir os comandos disponiveis. "+ ActiveCheckpoint.GetComponent<CheckpointController>().caminho));
     }
@@ -75,6 +76,7 @@ public class FurbotLAB : Furbot
                 }
                 if (Input.GetKeyDown(KeyCode.G))
                 {
+                    _uiManager.AtualizarQntEnergia(this.energia);
                     StartCoroutine(_uiManager.Diga(Dialog_Char.S223, "O Furbot possui "+ this.energia + " de energia restante e "+ this.vidas + " vidas"));
                 }
             }
